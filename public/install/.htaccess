@@ -1,0 +1,6 @@
+# Turn on the rewrite engine
+RewriteEngine On
+
+# Redirect requests to the install folder to index.php
+RewriteCond %{HTTP_HOST} ^([^/]+)/?$ [NC]
+RewriteRule ^install/$ /install/index.php [L]

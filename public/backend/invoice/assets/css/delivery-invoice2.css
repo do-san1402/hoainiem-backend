@@ -1,0 +1,143 @@
+.wrapper-bg {
+    background-image: url(../image/delivery-challan.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    print-color-adjust: exact;
+    background-position: center;
+    height: 100%;
+    position: relative;
+}
+
+.footer-bg {
+    height: 52px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.footer-bg p {
+    font-size: 8px;
+    color: #fff;
+    text-align: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+}
+
+.address i {
+    margin-right: 6px;
+}
+
+.logo img {
+    width: 335px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+}
+
+.voucher-header th {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px;
+}
+
+.voucher-header td {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px;
+}
+
+.main-table {
+    padding: 0px 25px;
+    border-collapse: inherit;
+}
+
+.main-table td {
+    /* padding: 8px 3px !important; */
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px;
+}
+.main-table tr {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px;
+}
+
+.main-table tr:nth-child(odd) {
+    background-color: #e0e0e0 !important;
+}
+
+.main-table tr:nth-child(even) {
+    background-color: #f4f4f4 !important;
+}
+
+.main-table thead th {
+    background-color: #058e5e;
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px;
+}
+
+ol {
+    margin: 0px;
+    padding-left: 20px;
+}
+
+ol li {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+@page {
+    size: A4;
+    margin: 0;
+    padding: 0px;
+}
+
+@media print {
+
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+    }
+
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}

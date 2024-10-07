@@ -1,0 +1,22 @@
+
+.custom-select
+{
+    border-left:4px solid #37a000;
+}
+
+.check-input{
+    width:20px !important;
+    padding:0px !important;
+    height:20px !important;
+    border:2px solid #58c85f !important;
+    margin-left:0px !important;
+}
+
+/* Css for Dashboard */
+
+.divContinuedAbsent{
+    height: 250px !important;
+    float: left;
+    width: 100%;
+    overflow-y: auto;
+}

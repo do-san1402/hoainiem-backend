@@ -1,0 +1,59 @@
+
+.loading-wrapper {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.processing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #333333;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 1rem 2rem;
+    
+}
+.processing-p{
+    text-align: center;
+    padding: 0px 40px;
+}
+.processing>svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.processing>svg>rect {
+    fill: none;
+    stroke: #333333;
+    stroke-width: 2px;
+    stroke-dasharray: 240 160 240 160;
+    stroke-dashoffset: 0;
+    animation: pathRect 2s linear infinite;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+}
+
+@keyframes pathRect {
+    25% {
+        stroke-dashoffset: 100;
+    }
+
+    50% {
+        stroke-dashoffset: 200;
+    }
+
+    75% {
+        stroke-dashoffset: 300;
+    }
+
+    100% {
+        stroke-dashoffset: 400;
+    }
+}

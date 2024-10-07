@@ -1,0 +1,5 @@
+*
+!.gitignore
+!vendor/
+!language.php
+!en/

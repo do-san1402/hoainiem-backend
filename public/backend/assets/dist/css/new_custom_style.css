@@ -1,0 +1,115 @@
+.top_card_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+    border-radius: 8px;
+}
+.top_card_section .card a {
+    color: unset;
+}
+.top_card_section .card {
+    border-radius: 12px;
+    box-shadow: none;
+}
+.top_card_section .card .counter_icon i {
+    font-size: 64px;
+}
+.top_card_section .card {
+    &:nth-child(1) {
+        background-color: #e8fccf;
+    }
+    &:nth-child(1) .counter_icon i {
+        color: #159b04;
+    }
+
+    &:nth-child(2) {
+        background-color: #e8ebed;
+    }
+    &:nth-child(2) .counter_icon i {
+        color: #1d3b53;
+    }
+    &:nth-child(3) {
+        background-color: #e7f6f8;
+    }
+    &:nth-child(3) .counter_icon i {
+        color: #17a2b8;
+    }
+    &:nth-child(4) {
+        background-color: #fdbfe1;
+    }
+    &:nth-child(4) .counter_icon i {
+        color: #bb076a;
+    }
+    &:nth-child(5) {
+        background-color: #f0ecf9;
+    }
+    &:nth-child(5) .counter_icon i {
+        color: #6f42c1;
+    }
+    &:nth-child(6) {
+        background-color: #ccf8fe;
+    }
+    &:nth-child(6) .counter_icon i {
+        color: #02a0fc;
+    }
+    &:nth-child(7) {
+        background-color: #fef3c7;
+    }
+    &:nth-child(7) .counter_icon i {
+        color: #eab308;
+    }
+    &:nth-child(8) {
+        background-color: #dcfce7;
+    }
+    &:nth-child(8) .counter_icon i {
+        color: #16a34a;
+    }
+}
+/* grid_section_two */
+.grid_section_two {
+    display: grid;
+    grid-template-columns: 35% auto;
+    gap: 30px;
+    border-radius: 8px;
+}
+/* dashboard_report_table */
+.dashboard_report_table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 1680px) {
+    .top_card_section {
+        gap: 20px;
+    }
+}
+@media only screen and (max-width: 1366px) {
+}
+@media only screen and (max-width: 1280px) {
+    .top_card_section {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .grid_section_two {
+        grid-template-columns: 40% auto;
+        gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .top_card_section {
+        grid-template-columns: 1fr 1fr;
+    }
+    .grid_section_two {
+        grid-template-columns: 1fr;
+    }
+    .dashboard_report_table {
+        grid-template-columns: 1fr;
+    }
+}
+@media only screen and (max-width: 991px) {
+    .top_card_section {
+        grid-template-columns: 1fr;
+    }
+}

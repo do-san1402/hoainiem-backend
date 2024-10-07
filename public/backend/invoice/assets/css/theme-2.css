@@ -1,0 +1,297 @@
+.wraper-bg {
+    background-image: url(../image/888.png)!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    print-color-adjust: exact;
+    background-position: center;
+    margin: 0px 20px;
+        height: 297mm;
+        -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+}
+
+.voucher-header th {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px;
+}
+
+.voucher-header td {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0px 3px;
+}
+
+.footer-bg {
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-around;
+}
+#print-table {
+    width: 198mm;
+    margin: 10px auto 10px;
+    background-color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+    -webkit-print-color-adjust: exact;
+}
+.information-section{
+    justify-content: space-between; 
+    padding: 0px;
+    display: flex;
+}
+.information-section h2{
+    font-size: 26px; 
+    margin: 0px; 
+    color: #1c2838; 
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+.address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+}
+
+.address i {
+    margin-right: 6px;
+}
+
+.logo {
+    width: 180px;
+    height: 60px;
+}
+.logo img{
+    width: 150px;
+    height: 65px;
+}
+p {
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-family: 'Montserrat';
+}
+.terms_condition{
+    display: flex; 
+    justify-content: space-between;
+    width: 100%; 
+    padding: 15px 0px; 
+    margin-bottom: 5px;
+}
+.terms_condition h5 {
+    margin: 0px; 
+    font-size:15px;
+}
+.terms_condition h3 {
+    color: #4dbd5b; 
+    font-size: 18px; 
+    margin-top: 15px;
+}
+.terms_condition h4 {
+    margin: 0px;
+    font-size: 18px;
+}
+
+.sales_admin{
+    font-size: 10px; 
+    font-weight: 500
+}
+.invoice-icon-info{
+    display: flex; 
+    align-items: center
+}
+.invoice-icon-info img{
+    width: 18px; 
+    height: 18px; 
+    margin-right: 5px;
+}
+.main-table {
+    padding: 0px 0px;
+    margin-top: 15px;
+}
+
+.top-table th, .main-table th, .payment-info-table th, .footer-table th, .footer-table td, .top-table td, .main-table td, .payment-info-table td, .footer-table td{
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 6px;
+}
+
+.top-table tr {
+    background-color: #e0e0e0;
+}
+
+.top-table thead th {
+    background-color: #58b447;
+    padding: 0px 10px;
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+.top-table{
+    margin-bottom: 5px;
+}
+
+.barcode-img{
+    height: 35px; 
+    margin-bottom: 5px
+}
+
+.main-table tr:nth-child(odd) {
+    background-color: #e0e0e0 !important;
+}
+
+.main-table tr:nth-child(even) {
+    background-color: #f4f4f4 !important;
+}
+
+.main-table thead th {
+    background-color: #58b447;
+    color: #fff;
+}
+
+.footer-table {
+    padding: 5px 0px;
+    width: 40%;
+    float: right;
+}
+.in-word-table {
+    padding: 5px 0px;
+    width: 50%;
+}
+.footer-table tbody tr td{
+    width: 45%;
+}
+
+.footer-table tr th:nth-child(odd) {
+    background-color: #58b447 !important;
+    color: #fff;
+}
+
+.footer-table tr td:nth-child(even) {
+    background-color: #f4f4f4 !important;
+    text-align: end;
+}
+.payment-section{
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%; 
+    padding: 20px 0px;
+}
+.payment-info-table tr th:nth-child(odd) {
+    background-color: #58b447 !important;
+    color: #fff;
+}
+
+.payment-info-table {
+    width: 100%;
+}
+
+.payment-info-table tr td:nth-child(even) {
+    background-color: #f4f4f4 !important;
+}
+
+ol {
+    margin: 0px;
+    padding-left: 20px;
+}
+
+ol li {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+table {
+    border-spacing: 1px;
+    width: 100%;
+    border-collapse: initial;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+    padding: 0px;
+    -webkit-print-color-adjust: exact !important;
+}
+.page-no{
+    opacity: 0;
+}
+
+@media print {
+
+    html, body {
+        width: 210mm;
+        padding-right: 0px !important;
+        background: transparent;
+    }
+
+    #print-table{
+        box-shadow: none !important;
+    }
+
+
+    @page {
+        size: A4;
+        margin: 0px;
+    }
+    
+    .page-no{
+        opacity: 1;
+    }
+    #invoiceFooter {
+        display: none;
+    }
+
+    .non-break-div {
+        page-break-after: avoid;
+        page-break-before: avoid;
+        page-break-inside: avoid;
+    }
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+    .wraper-bg {
+        background-image: url(../image/888.png) !important;
+        background-size: cover!important;
+        background-repeat: no-repeat!important;
+        print-color-adjust: exact!important;
+        background-position: center!important;
+        height: 297mm!important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    body {
+        background-image: url(../image/888.png) !important;
+        background-size: cover!important;
+        background-repeat: no-repeat!important;
+        print-color-adjust: exact!important;
+        background-position: center!important;
+        height: 297mm!important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+       }
+
+}

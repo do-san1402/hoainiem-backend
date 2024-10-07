@@ -1,0 +1,11 @@
+{
+    "name": "RssFeeds",
+    "alias": "rssfeeds",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\RssFeeds\\Providers\\RssFeedsServiceProvider"
+    ],
+    "files": []
+}

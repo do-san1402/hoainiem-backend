@@ -1,0 +1,18 @@
+{
+    "Setting": true,
+    "Permission": true,
+    "Localize": true,
+    "Report": true,
+    "AddOn": true,
+    "Theme": true,
+    "UserManagement": true,
+    "Category": true,
+    "Advertisement": true,
+    "Reporter": true,
+    "Seo": true,
+    "RssFeeds": true,
+    "Page": true,
+    "News": true,
+    "Menu": true,
+    "Archive": true
+}

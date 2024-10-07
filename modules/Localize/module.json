@@ -1,0 +1,11 @@
+{
+    "name": "Localize",
+    "alias": "localize",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Localize\\Providers\\LocalizeServiceProvider"
+    ],
+    "files": []
+}
