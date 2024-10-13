@@ -63,3 +63,15 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 # hoainiem-backend
+
+
+php artisan vendor:publish --tag=public --force
+
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+php artisan optimize:clear
+
+
+php artisan storage:link

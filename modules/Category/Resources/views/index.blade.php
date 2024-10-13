@@ -17,8 +17,6 @@
                             <a href="#" class="btn btn-success btn-sm" onclick="addCategoryDetails()"><i
                                     class="fa fa-plus-circle"></i>&nbsp;{{ localize('new_category') }}</a>
                         @endcan
-
-
                     </div>
                 </div>
             </div>
@@ -28,7 +26,6 @@
                 {{ $dataTable->table() }}
             </div>
         </div>
-
     </div>
 
     <!-- Modal -->
