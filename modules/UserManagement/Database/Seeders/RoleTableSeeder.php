@@ -19,16 +19,18 @@ class RoleTableSeeder extends Seeder
     {
         Model::unguard();
 
-        $superAdmin = Role::create([
+        $superAdmin = Role::firstOrCreate([
             'name' => 'Super Admin',
             'guard_name' => 'web',
+        ], [
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        $reporter = Role::create([
+        $reporter = Role::firstOrCreate([
             'name' => 'Reporter',
             'guard_name' => 'web',
+        ], [
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -216,145 +218,145 @@ class RoleTableSeeder extends Seeder
                 'read_setting',
                 'update_setting',
                 'delete_setting',
-                '404 Page Setting' => [
-                    'create_404_page_setting',
-                    'read_404_page_setting',
-                    'update_404_page_setting',
-                    'delete_404_page_setting',
-                ],
-                'Color Setting' => [
-                    'create_color_setting',
-                    'read_color_setting',
-                    'update_color_setting',
-                    'delete_color_setting',
-                ],
-                'Social auth setting' => [
-                    'create_social_auth_setting',
-                    'read_social_auth_setting',
-                    'update_social_auth_setting',
-                    'delete_social_auth_setting',
-                ],
-                'Cache System' => [
-                    'create_cache_system',
-                    'read_cache_system',
-                    'update_cache_system',
-                    'delete_cache_system',
-                ],
-                'Date Field Setup' => [
-                    'create_date_field_setup',
-                    'read_date_field_setup',
-                    'update_date_field_setup',
-                    'delete_date_field_setup',
-                ],
-                'Panel Face' => [
-                    'create_panel_face',
-                    'read_panel_face',
-                    'update_panel_face',
-                    'delete_panel_face',
-                ],
+                // '404 Page Setting' => [
+                //     'create_404_page_setting',
+                //     'read_404_page_setting',
+                //     'update_404_page_setting',
+                //     'delete_404_page_setting',
+                // ],
+                // 'Color Setting' => [
+                //     'create_color_setting',
+                //     'read_color_setting',
+                //     'update_color_setting',
+                //     'delete_color_setting',
+                // ],
+                // 'Social auth setting' => [
+                //     'create_social_auth_setting',
+                //     'read_social_auth_setting',
+                //     'update_social_auth_setting',
+                //     'delete_social_auth_setting',
+                // ],
+                // 'Cache System' => [
+                //     'create_cache_system',
+                //     'read_cache_system',
+                //     'update_cache_system',
+                //     'delete_cache_system',
+                // ],
+                // 'Date Field Setup' => [
+                //     'create_date_field_setup',
+                //     'read_date_field_setup',
+                //     'update_date_field_setup',
+                //     'delete_date_field_setup',
+                // ],
+                // 'Panel Face' => [
+                //     'create_panel_face',
+                //     'read_panel_face',
+                //     'update_panel_face',
+                //     'delete_panel_face',
+                // ],
             ],
-            'Theme Setup' => [
-                'create_theme_setup',
-                'read_theme_setup',
-                'update_theme_setup',
-                'delete_theme_setup',
-            ],
-            'Software Setup' => [
-                'create_software_setup',
-                'read_software_setup',
-                'update_software_setup',
-                'delete_software_setup',
-            ],
-            'Application' => [
-                'create_application',
-                'read_application',
-                'update_application',
-                'delete_application',
-            ],
-            'App Setting' => [
-                'create_apps_setting',
-                'read_apps_setting',
-                'update_apps_setting',
-                'delete_apps_setting',
-            ],
-            'Mail Setup' => [
-                'create_mail_setup',
-                'read_mail_setup',
-                'update_mail_setup',
-                'delete_mail_setup',
-            ],
+            // 'Theme Setup' => [
+            //     'create_theme_setup',
+            //     'read_theme_setup',
+            //     'update_theme_setup',
+            //     'delete_theme_setup',
+            // ],
+            // 'Software Setup' => [
+            //     'create_software_setup',
+            //     'read_software_setup',
+            //     'update_software_setup',
+            //     'delete_software_setup',
+            // ],
+            // 'Application' => [
+            //     'create_application',
+            //     'read_application',
+            //     'update_application',
+            //     'delete_application',
+            // ],
+            // 'App Setting' => [
+            //     'create_apps_setting',
+            //     'read_apps_setting',
+            //     'update_apps_setting',
+            //     'delete_apps_setting',
+            // ],
+            // 'Mail Setup' => [
+            //     'create_mail_setup',
+            //     'read_mail_setup',
+            //     'update_mail_setup',
+            //     'delete_mail_setup',
+            // ],
             'Space Credential' => [
                 'create_space_credential',
                 'read_space_credential',
                 'update_space_credential',
                 'delete_space_credential',
             ],
-            'SMS Setup' => [
-                'create_sms_setup',
-                'read_sms_setup',
-                'update_sms_setup',
-                'delete_sms_setup',
-            ],
-            'Password Setting' => [
-                'create_password_setting',
-                'read_password_setting',
-                'update_password_setting',
-                'delete_password_setting',
-            ],
-            'Language' => [
-                'create_language',
-                'read_language',
-                'update_language',
-                'delete_language',
-                'Add Language' => [
-                    'create_add_language',
-                    'read_add_language',
-                    'update_add_language',
-                    'delete_add_language',
-                ],
-            ],
-            'Language Strings' => [
-                'create_language_strings',
-                'read_language_strings',
-                'update_language_strings',
-                'delete_language_strings',
-            ],
-            'User Management' => [
-                'create_user_management',
-                'read_user_management',
-                'update_user_management',
-                'delete_user_management',
-            ],
-            'Role List' => [
-                'create_role_list',
-                'read_role_list',
-                'update_role_list',
-                'delete_role_list',
-            ],
-            'User List' => [
-                'create_user_list',
-                'read_user_list',
-                'update_user_list',
-                'delete_user_list',
-            ],
-            'Factory Reset' => [
-                'create_factory_reset',
-                'read_factory_reset',
-                'update_factory_reset',
-                'delete_factory_reset',
-            ],
-            'Backup And Reset' => [
-                'create_backup_and_reset',
-                'read_backup_and_reset',
-                'update_backup_and_reset',
-                'delete_backup_and_reset',
-            ],
-            'Access Log' => [
-                'create_access_log',
-                'read_access_log',
-                'update_access_log',
-                'delete_access_log',
-            ],
+            // 'SMS Setup' => [
+            //     'create_sms_setup',
+            //     'read_sms_setup',
+            //     'update_sms_setup',
+            //     'delete_sms_setup',
+            // ],
+            // 'Password Setting' => [
+            //     'create_password_setting',
+            //     'read_password_setting',
+            //     'update_password_setting',
+            //     'delete_password_setting',
+            // ],
+            // 'Language' => [
+            //     'create_language',
+            //     'read_language',
+            //     'update_language',
+            //     'delete_language',
+            //     'Add Language' => [
+            //         'create_add_language',
+            //         'read_add_language',
+            //         'update_add_language',
+            //         'delete_add_language',
+            //     ],
+            // ],
+            // 'Language Strings' => [
+            //     'create_language_strings',
+            //     'read_language_strings',
+            //     'update_language_strings',
+            //     'delete_language_strings',
+            // ],
+            // 'User Management' => [
+            //     'create_user_management',
+            //     'read_user_management',
+            //     'update_user_management',
+            //     'delete_user_management',
+            // ],
+            // 'Role List' => [
+            //     'create_role_list',
+            //     'read_role_list',
+            //     'update_role_list',
+            //     'delete_role_list',
+            // ],
+            // 'User List' => [
+            //     'create_user_list',
+            //     'read_user_list',
+            //     'update_user_list',
+            //     'delete_user_list',
+            // ],
+            // 'Factory Reset' => [
+            //     'create_factory_reset',
+            //     'read_factory_reset',
+            //     'update_factory_reset',
+            //     'delete_factory_reset',
+            // ],
+            // 'Backup And Reset' => [
+            //     'create_backup_and_reset',
+            //     'read_backup_and_reset',
+            //     'update_backup_and_reset',
+            //     'delete_backup_and_reset',
+            // ],
+            // 'Access Log' => [
+            //     'create_access_log',
+            //     'read_access_log',
+            //     'update_access_log',
+            //     'delete_access_log',
+            // ],
             'Web Setup' => [
                 'create_web_setup',
                 'read_web_setup',
@@ -366,18 +368,18 @@ class RoleTableSeeder extends Seeder
                     'update_setup_top_breaking_post',
                     'delete_setup_top_breaking_post',
                 ],
-                'Home Page' => [
-                    'create_home_page',
-                    'read_home_page',
-                    'update_home_page',
-                    'delete_home_page',
-                ],
-                'Contact Page Setup' => [
-                    'create_contact_page_setup',
-                    'read_contact_page_setup',
-                    'update_contact_page_setup',
-                    'delete_contact_page_setup',
-                ],
+                // 'Home Page' => [
+                //     'create_home_page',
+                //     'read_home_page',
+                //     'update_home_page',
+                //     'delete_home_page',
+                // ],
+                // 'Contact Page Setup' => [
+                //     'create_contact_page_setup',
+                //     'read_contact_page_setup',
+                //     'update_contact_page_setup',
+                //     'delete_contact_page_setup',
+                // ],
             ],
         ];
 

@@ -75,3 +75,8 @@ php artisan optimize:clear
 
 
 php artisan storage:link
+
+
+Import file sql: database.sql 
+
+Run: php artisan db:seed
