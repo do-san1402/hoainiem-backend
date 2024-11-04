@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\ApiAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,10 @@ Route::get('photo-home', [ApiController::class, 'photoHomePosts']);
 Route::get('xml-category-all', [ApiController::class, 'sitemapXmlCategory']);
 Route::get('xml-category-post', [ApiController::class, 'sitemapXml']);
 Route::get('metadata', [ApiController::class, 'metaAllData']);
+
+Route::post('login', [ApiAuthController::class, 'login']);
+
+Route::middleware('web')->get('/csrf-token', function () {
+    return response()->json(['csrf_token' => csrf_token()]);
+});
+
