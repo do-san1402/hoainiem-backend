@@ -15,19 +15,23 @@ class ApiAuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            $user = Auth::user();
-
-            $token = $user->createToken('auth_token')->plainTextToken;
-
+        if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
-                'access_token' => $token,
-                'token_type' => 'Bearer',
-                'user' => $user,
-            ]);
+                'message' => 'Thông tin đăng nhập không chính xác',
+            ], 401);
         }
 
-        return response()->json(['message' => 'Thông tin đăng nhập không chính xác'], 401);
+        $user = Auth::user();
+
+        
+        $tokenResult = $user->createToken('auth_token');
+        $token = $tokenResult->accessToken;
+
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'user' => $user,
+        ]);
     }
 
     public function logout(Request $request)

@@ -62,8 +62,13 @@ Route::get('xml-category-post', [ApiController::class, 'sitemapXml']);
 Route::get('metadata', [ApiController::class, 'metaAllData']);
 
 Route::post('login', [ApiAuthController::class, 'login']);
-
 Route::middleware('web')->get('/csrf-token', function () {
     return response()->json(['csrf_token' => csrf_token()]);
 });
 
+Route::middleware('auth:api')->get('/details', function (Request $request) {
+    return response()->json([
+        'authenticated' => true,
+        'user' => $request->user(),
+    ]);
+});
