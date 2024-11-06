@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Passport\Passport;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
 
 class ApiAuthController extends Controller
 {
@@ -23,7 +25,6 @@ class ApiAuthController extends Controller
 
         $user = Auth::user();
 
-        
         $tokenResult = $user->createToken('auth_token');
         $token = $tokenResult->accessToken;
 
@@ -38,5 +39,35 @@ class ApiAuthController extends Controller
     {
         $request->user()->tokens()->delete();
         return response()->json(['message' => 'Đăng xuất thành công']);
+    }
+    
+    public function sendResetLinkEmail(Request $request)
+    {
+        $request->validate(['email' => 'required|email']);
+        $status = Password::sendResetLink($request->only('email'));
+
+        return $status === Password::RESET_LINK_SENT
+            ? $this->sendResetLinkResponse($request, $status)
+            : $this->sendResetLinkFailedResponse($request, $status);
+    }
+
+    protected function sendResetLinkResponse(Request $request, $response)
+    {
+        return $request->wantsJson()
+            ? new JsonResponse(['message' => trans($response)], 200)
+            : back()->with('status', trans($response));
+    }
+
+    protected function sendResetLinkFailedResponse(Request $request, $response)
+    {
+        if ($request->wantsJson()) {
+            throw ValidationException::withMessages([
+                'email' => [trans($response)],
+            ]);
+        }
+
+        return back()
+            ->withInput($request->only('email'))
+            ->withErrors(['email' => trans($response)]);
     }
 }
