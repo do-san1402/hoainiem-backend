@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use Modules\Reporter\Entities\Reporter;
+use Illuminate\Support\Facades\Hash;
 
 class ApiAuthController extends Controller
 {
@@ -69,5 +73,43 @@ class ApiAuthController extends Controller
         return back()
             ->withInput($request->only('email'))
             ->withErrors(['email' => trans($response)]);
+    }
+
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:users',
+            'contact_no' => 'required',
+            'full_name' => 'required',
+            'sex' => 'required',
+            'birth_date' => 'required|date',
+            'address_one' => 'required',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // Create User
+        $user = User::create([
+            'email' => $request->email,
+            'contact_no' => $request->contact_no,
+            'full_name' => $request->full_name,
+            'password' => Hash::make($request->password),
+        ]);
+
+        Reporter::create([
+            'user_id' => $user->id,
+            'name' => $request->full_name,
+            'email' => $request->email,
+            'mobile' => $request->contact_no,
+            'sex' => $request->sex,
+            'birth_date' => $request->birth_date,
+            'address_one' => $request->address_one,
+            'status' => 0,
+        ]);
+
+        return response()->json(['message' => 'User registered successfully!'], 201);
     }
 }

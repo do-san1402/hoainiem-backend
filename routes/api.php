@@ -72,3 +72,4 @@ Route::middleware('auth:api')->get('/details', function (Request $request) {
     ]);
 });
 Route::post('forgot-password', [ApiAuthController::class, 'sendResetLinkEmail']);
+Route::post('register', [ApiAuthController::class, 'register']);
