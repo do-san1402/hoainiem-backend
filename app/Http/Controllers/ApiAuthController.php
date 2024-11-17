@@ -90,8 +90,7 @@ class ApiAuthController extends Controller
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
-
-        // Create User
+        
         $user = User::create([
             'email' => $request->email,
             'contact_no' => $request->contact_no,

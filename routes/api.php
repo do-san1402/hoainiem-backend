@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ApiAuthController;
+use App\Http\Controllers\ApiUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,11 +66,12 @@ Route::post('login', [ApiAuthController::class, 'login']);
 Route::middleware('web')->get('/csrf-token', function () {
     return response()->json(['csrf_token' => csrf_token()]);
 });
-Route::middleware('auth:api')->get('/details', function (Request $request) {
+Route::middleware('auth:api')->get('/check-auth', function (Request $request) {
     return response()->json([
-        'authenticated' => true,
-        'user' => $request->user(),
+        'authenticated' => true
     ]);
 });
+Route::middleware('auth:api')->get('/user/detail/{user_id}', [ApiUserController::class, 'get']);
+Route::middleware('auth:api')->post('/user/update/{user_id}', [ApiUserController::class, 'update']);
 Route::post('forgot-password', [ApiAuthController::class, 'sendResetLinkEmail']);
 Route::post('register', [ApiAuthController::class, 'register']);
