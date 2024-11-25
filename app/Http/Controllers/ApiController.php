@@ -110,9 +110,9 @@ class ApiController extends Controller
             ->select('menu_contents.menu_level', 'menu_contents.slug', 'menu_contents.id')
             ->join('menus', 'menus.id', '=', 'menu_contents.menu_id')
             ->leftJoin('categories', 'categories.slug', '=', 'menu_contents.slug')
-            ->where('menus.position', 2)
+            ->where('menus.position', 1)
             ->whereNull('menu_contents.parent_id') // Get menu not has parentID 
-            ->orderBy('menu_contents.id', 'DESC')
+            ->orderBy('menu_contents.menu_position', 'ASC')
             ->get();
 
         foreach ($main as $row) {
