@@ -80,3 +80,6 @@ php artisan storage:link
 Import file sql: database.sql 
 
 Run: php artisan db:seed
+
+Chạy lệnh sau để tạo lại cặp khóa RSA cho Passport
+php artisan passport:keys

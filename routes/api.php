@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\ApiUserController;
+use App\Http\Controllers\Api\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,5 +74,6 @@ Route::middleware('auth:api')->get('/check-auth', function (Request $request) {
 });
 Route::middleware('auth:api')->get('/user/detail/{user_id}', [ApiUserController::class, 'get']);
 Route::middleware('auth:api')->post('/user/update/{user_id}', [ApiUserController::class, 'update']);
+Route::middleware('auth:api')->post('/posts', [PostController::class, 'store']);
 Route::post('forgot-password', [ApiAuthController::class, 'sendResetLinkEmail']);
 Route::post('register', [ApiAuthController::class, 'register']);

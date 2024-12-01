@@ -12,7 +12,6 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        'password_recovery',
-        'api/csrf-token'
+        'api/*'
     ];
 }
