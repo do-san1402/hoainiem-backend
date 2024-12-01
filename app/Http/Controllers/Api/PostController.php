@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use App\Services\PhotoLibraryService;
 use Exception;
+use Modules\Reporter\Entities\Reporter;
 
 class PostController extends Controller
 {
@@ -30,6 +31,10 @@ class PostController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
+        $reporter = Reporter::where([
+            'user_id' => $user->id,
+        ])->first();
+
         if ($request->hasFile('image')) {
             $photoLibraryService = new PhotoLibraryService();
             try {
@@ -44,16 +49,17 @@ class PostController extends Controller
                 return response()->json(['error' => 'Unable to upload image.'], 500);
             }
         }
+        $title = $validated['title'];
 
         $dataNewsMst = [
             'news_id'      => NewsMst::max('id') + 1,
-            'encode_title' => Str::slug($validated['title']),
-            'seo_title'    => $validated['title'],
-            'stitle'       => $validated['title'],
-            'title'        => $validated['title'],
+            'encode_title' => Str::slug($title),
+            'seo_title'    => $title,
+            'stitle'       => $title,
+            'title'        => $title,
             'news'         => $validated['description'],
-            'image_title'  => $validated['title'],
-            'image_title'  => $validated['title'],
+            'image_title'  => $title,
+            'image_title'  => $title,
             'page'         => $validated['category'],
             'publish_date' => $validated['release_date'],
             'status'       => 0,
@@ -63,7 +69,7 @@ class PostController extends Controller
             'post_date'    => Carbon::now(),
             'last_update'  => Carbon::now()->format('Y-m-d h:i:s'),
             'reader_hit'   => 0,
-            'reporter_id'  => $user->id,
+            'reporter_id'  => $reporter->id ?? null,
             'post_by'      => $user->id,
             'image'        => $validated['image'] ?? null,
         ];

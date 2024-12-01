@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Modules\Reporter\Entities\Reporter;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class ApiAuthController extends Controller
 {
@@ -28,14 +29,25 @@ class ApiAuthController extends Controller
         }
 
         $user = Auth::user();
+        $reporterInfo = Reporter::where([
+            'user_id' => $user->id,
+            'status' => 1,
+        ])->first();
+
+        if (!$reporterInfo) {
+            return response()->json([
+                'message' => 'Người dùng không có quyền phóng viên. Cần liên hệ admin để cấp quyền.',
+            ], 403);
+        }    
 
         $tokenResult = $user->createToken('auth_token');
         $token = $tokenResult->accessToken;
 
         return response()->json([
             'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user,
+            'token_type'   => 'Bearer',
+            'user'         => $user,
+            'reporter'     => $reporterInfo,
         ]);
     }
 
@@ -99,14 +111,16 @@ class ApiAuthController extends Controller
         ]);
 
         Reporter::create([
-            'user_id' => $user->id,
-            'name' => $request->full_name,
-            'email' => $request->email,
-            'mobile' => $request->contact_no,
-            'sex' => $request->sex,
-            'birth_date' => $request->birth_date,
+            'user_id'   => $user->id,
+            'name'      => $request->full_name,
+            'email'     => $request->email,
+            'mobile'    => $request->contact_no,
+            'sex'       => $request->sex,
+            'birth_date'  => $request->birth_date,
             'address_one' => $request->address_one,
-            'status' => 0,
+            'status'      => 0,
+            'reporter_id' => str_pad(Reporter::max('id') + 1, 6, 0, STR_PAD_LEFT),
+            'uuid'        => (string) Str::uuid(),
         ]);
 
         return response()->json(['message' => 'User registered successfully!'], 201);
