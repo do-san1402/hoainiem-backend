@@ -36,7 +36,7 @@ class ApiAuthController extends Controller
 
         if (!$reporterInfo) {
             return response()->json([
-                'message' => 'Người dùng không có quyền phóng viên. Cần liên hệ admin để cấp quyền.',
+                'message' => 'Bạn không có quyền phóng viên. Cần liên hệ admin để cấp quyền.',
             ], 403);
         }    
 

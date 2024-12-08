@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\ApiUserController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,13 +68,23 @@ Route::post('login', [ApiAuthController::class, 'login']);
 Route::middleware('web')->get('/csrf-token', function () {
     return response()->json(['csrf_token' => csrf_token()]);
 });
-Route::middleware('auth:api')->get('/check-auth', function (Request $request) {
-    return response()->json([
-        'authenticated' => true
-    ]);
-});
-Route::middleware('auth:api')->get('/user/detail/{user_id}', [ApiUserController::class, 'get']);
-Route::middleware('auth:api')->post('/user/update/{user_id}', [ApiUserController::class, 'update']);
-Route::middleware('auth:api')->post('/posts', [PostController::class, 'store']);
+
 Route::post('forgot-password', [ApiAuthController::class, 'sendResetLinkEmail']);
 Route::post('register', [ApiAuthController::class, 'register']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/check-auth', function (Request $request) {
+        return response()->json([
+            'authenticated' => true
+        ]);
+    });
+    Route::get('/user/detail/{user_id}', [ApiUserController::class, 'get']);
+    Route::post('/user/update/{user_id}', [ApiUserController::class, 'update']);
+    Route::post('/posts', [PostController::class, 'store']);
+
+    Route::get('/posts/{postId}/comments', [CommentController::class, 'index']);
+    Route::post('/comments', [CommentController::class, 'store']);
+    Route::post('/comments/{commentId}/reply', [CommentController::class, 'reply']);
+    Route::get('/comments/{commentId}/likes', [CommentController::class, 'getTotalLikes']);
+    Route::post('/comments/{commentId}/like', [CommentController::class, 'toggleLikeComment']);
+});
