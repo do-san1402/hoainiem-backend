@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="d-flex align-items-center justify-content-center text-center login-bg h-100vh"
-        style="background-image: url({{ app_setting()->login_image }});">
+        style="">
 
          @include('backend.layouts.common.message')
 

@@ -17,8 +17,8 @@ class CommentController extends Controller
 
         $comments = Comment::with(['user', 'replies' => function ($query) use ($userId) {
             $query->with('user')
-            ->withCount('likes')
-            ->orderBy('created_at', 'desc');
+                ->withCount('likes')
+                ->orderBy('created_at', 'desc');
         }])
             ->where('post_id', $postId)
             ->withCount('likes')
@@ -30,11 +30,17 @@ class CommentController extends Controller
                 ->where('comment_id', $comment->id)
                 ->exists();
 
+            // Convert created_at to "time ago" format
+            $comment->created_at_human = $comment->created_at->diffForHumans();
+
             if ($comment->replies) {
                 $comment->replies->transform(function ($reply) use ($userId) {
                     $reply->isLikedByUser = Like::where('user_id', $userId)
                         ->where('comment_id', $reply->id)
                         ->exists();
+
+                    // Convert created_at for replies to "time ago" format
+                    $reply->created_at_human = $reply->created_at->diffForHumans();
 
                     return $reply;
                 });
@@ -46,8 +52,9 @@ class CommentController extends Controller
         return response()->json([
             'total_comments' => $totalComments,
             'comments' => $comments,
-        ]);    
+        ]);
     }
+
 
     public function store(Request $request)
     {
@@ -102,13 +109,13 @@ class CommentController extends Controller
     {
         $userId = Auth::user()->id;
         $comment = Comment::findOrFail($commentId);
-       
+
         $like = Like::where('user_id', $userId)
             ->where('comment_id', $commentId)
             ->first();
 
         if ($like) {
-           
+
             $like->delete();
             $comment->decrement('likes');
             return response()->json([
@@ -117,7 +124,7 @@ class CommentController extends Controller
                 'isLikedByUser' => false,
             ]);
         } else {
-           
+
             Like::create([
                 'user_id' => $userId,
                 'comment_id' => $commentId,

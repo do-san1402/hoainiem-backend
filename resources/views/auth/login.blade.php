@@ -3,17 +3,17 @@
 @section('content')
 
     <div class="d-flex align-items-center justify-content-center text-center login-bg h-100vh"
-        style="background-image: url({{ app_setting()->login_image }});">
+        style="">
         <div class="form-wrapper position-relative m-auto">
             <div class="form-container my-4">
                 <div class="panel login-form-w">
                     <div class="panel-header text-center mb-3">
                         <div class="mb-3">
-                            <img src="{{ app_setting()->logo }}" class="img" width="180" height="90"
+                            <img src="{{ app_setting()->logo }}" class="img" width="140" height="140"
                                 alt="">
                         </div>
-                        <h3 class="fs-24 fw-bold mb-1">{{ app_setting()->title }} Login</h3>
-                        <p class="fw--semi-bold text-center fs-14 mb-0">Welcome Back, {{ app_setting()->title }}</p>
+                        <h3 class="fs-24 fw-bold mb-1">{{ app_setting()->title }} Đăng nhập</h3>
+                        <p class="fw--semi-bold text-center fs-14 mb-0">Chào mừng trở lại, {{ app_setting()->title }}</p>
                     </div>
 
                     {{-- Displaying the custom error message --}}
@@ -69,13 +69,13 @@
                             </div>
                         @endif
 
-                        <div class="form-check mb-3 text-end">
+                        <!-- <div class="form-check mb-3 text-end">
                             @if (Route::has('password.request'))
                                 <a href="{{ route('password.request') }}"
                                     class="text-black fw-medium">{{ localize('forgot_password') }}</a>
                             @endif
-                        </div>
-                        <button type="submit" class="btn btn-success py-2 w-100">{{ localize('sign_in') }}</button>
+                        </div> -->
+                        <button type="submit" class="btn btn-success py-2 w-100 my-2">{{ localize('sign_in') }}</button>
                     </form>
                 </div>
             </div>
